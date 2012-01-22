@@ -1,0 +1,130 @@
+// hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
+// https://github.com/twitter/bootstrap/pull/351
+:root .alert-message, :root button, :root .button {
+  border-radius: 0 \0;
+}
+
+
+/* common font-styling */
+.bold       { font-weight: bold; }
+.italic     { font-style: italic; }
+.sans       { font-family: Sans-serif; }
+
+/* common face colors */
+.white      { color: #fafafa; }
+
+/* common background colors */
+.bg-body-grey      { .bg-color(@canddi-bg-body-grey); }
+.bg-content-grey   { .bg-color(@canddi-bg-content-grey); }
+.bg-contact-grey   { .bg-color(@canddi-bg-contact-grey); }
+.bg-widget-grey    { .bg-color(@canddi-bg-widget-grey); }
+
+
+/* common HTML elements */
+h1 { .sans; }
+
+
+/* layout elements */
+body               { margin: 0; padding: 0; .white; .bg-body-grey; }
+#header            { margin: 0; padding: 7px 25px 7px 25px; position: fixed; width: 100%;
+                     background-color: @bg-header-grey; border-bottom: 2px solid lighten(@canddi-bg-widget-grey, 45%); }
+#header h1         { margin: 0; font-size: 15px; }
+#container         { width: 50%; margin: 0 auto 1% auto; padding: 2.5% 24%; .bg-widget-grey; }
+#container div div { margin-top: 15px; .bg-widget-grey; }
+
+
+/* Buttons styling */
+button        { .button; }
+button.green  { .button.green; }
+button.red    { .button.red; }
+button.blue   { .button.blue; }
+button.grey   { .button.grey; }
+button.small  { .button.small; }
+button.med    { .button.med; }
+button.large  { .button.large; }
+
+.button       { .white; .shadow; border-width: 0; outline: none; cursor: pointer; .rounded-corners; }
+a.button      { display: inline-block; .sans; }
+
+.button.green    { .grad-linear(@btn-green-bottom,       @btn-green-top,                   @btn-green-bottom,                    0.05, 0.95); 
+        &:hover  { .grad-linear(@btn-hover-green-bottom, @btn-hover-green-top,             @btn-hover-green-bottom,              0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-green-bottom, darken(@btn-hover-green-top, 6%), lighten(@btn-hover-green-bottom, 6%), 0.25, 0.95); }
+      }
+.button.red      { .grad-linear(@btn-red-bottom,         @btn-red-top,                     @btn-red-bottom,                      0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-red-bottom,   @btn-hover-red-top,               @btn-hover-red-bottom,                0.05, 0.96); }
+        &:active { .grad-linear(@btn-hover-red-bottom,   darken(@btn-hover-red-top, 10%),  lighten(@btn-hover-red-bottom, 6%),   0.45, 0.96); }
+      }
+.button.blue     { .grad-linear(@btn-blue-bottom,        @btn-blue-top,                    @btn-blue-bottom,                     0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-blue-bottom,  @btn-hover-blue-top,              @btn-hover-blue-bottom,               0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-blue-bottom,  darken(@btn-hover-blue-top, 11%), lighten(@btn-hover-blue-bottom, 7%),  0.45, 0.95); }
+      }
+.button.grey     { .grad-linear(@btn-grey-bottom,        @btn-grey-top,                    @btn-grey-bottom,                     0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-grey-bottom,  @btn-hover-grey-top,              @btn-hover-grey-bottom,               0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-grey-bottom,  darken(@btn-hover-grey-top, 15%), lighten(@btn-hover-grey-bottom, 9%),  0.45, 0.95); }
+      }
+
+.button.small { font-size: 11px; line-height: 15px; padding: 0px 7px; }
+.button.med   { font-size: 12px; line-height: 15px; padding: 4px 10px 3px 10px; }
+.button.large { font-size: 12px; line-height: 15px; padding: 7px 15px 6px 15px; }
+
+
+// ========== LESS VARIABLES & MIXINS ==========
+// see: http://coding.smashingmagazine.com/2011/09/09/an-introduction-to-less-and-comparison-to-sass/
+
+// *** LESS mixins ***
+.bg-color (@bgcolor)            { background-color: @bgcolor; }
+.shadow ()                      { text-shadow: 0 1px 0px rgba(0,0,0,0.5); }
+.rounded-corners (@radius: 5px) { -webkit-border-radius: @radius; -moz-border-radius: @radius; border-radius: @radius; }
+
+/** 
+ * Gradients definitions
+ * http://css-tricks.com/css3-gradients/ (order of styles: fallback color, fallback img, CSS gradients
+ * https://developer.mozilla.org/en/CSS/linear-gradient 
+ * MSIE: http://stackoverflow.com/questions/3934693/gradients-in-internet-explorer-9
+**/
+.grad-linear (@border-color, @color-top, @color-bottom, @stoppos-top-length: 0, @stoppos-bottom-length: 1) {
+  background-color:    @color-bottom;                // solid color fallback definition if gradients don't work in a particular browser
+  border:              1px solid @border-color;
+  border-bottom-color: fadein(rgba(0,0,0,.1), 10%);  // IE
+  border-bottom-color: darken(@border-color, 10%);   // others
+
+  // *** background gradient definitions per each browser *** //
+  background-image:         linear-gradient(top, @color-top percentage(@stoppos-top-length), @color-bottom percentage(@stoppos-bottom-length));
+  background-image:      -o-linear-gradient(top, @color-top percentage(@stoppos-top-length), @color-bottom percentage(@stoppos-bottom-length));
+  background-image:     -ms-linear-gradient(top, @color-top percentage(@stoppos-top-length), @color-bottom percentage(@stoppos-bottom-length));
+  background-image:    -moz-linear-gradient(top, @color-top percentage(@stoppos-top-length), @color-bottom percentage(@stoppos-bottom-length));
+  background-image: -webkit-linear-gradient(top, @color-top percentage(@stoppos-top-length), @color-bottom percentage(@stoppos-bottom-length));
+  background-image:  -khtml-gradient(linear, left top, left bottom, from(@color-top), to(@color-bottom));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(@stoppos-top-length, @color-top), color-stop(@stoppos-bottom-length, @color-bottom));
+            filter:    ~`"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{color-top}', EndColorStr='@{color-bottom}')"`;   /* IE6,IE7 */
+        -ms-filter:  ~`"\"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{color-top}', EndColorStr='@{color-bottom}')\""`; /* IE8,IE9 */
+}
+
+
+// *** LESS variables ***
+@bg-header-grey:         darken(@canddi-bg-body-grey, 10%);
+@canddi-bg-body-grey:    rgb(29,36,41);
+@canddi-bg-content-grey: rgb(40,49,54);
+@canddi-bg-contact-grey: rgb(29,36,41);
+@canddi-bg-widget-grey:  rgb(62,76,84);
+
+@btn-green-top:          rgb(140,201,0);
+@btn-green-bottom:       rgb(97,147,1);
+@btn-hover-green-top:    rgb(157,212,3);
+@btn-hover-green-bottom: rgb(93,154,0);
+
+@btn-red-top:            rgb(238,0,6);
+@btn-red-bottom:         rgb(162,24,24);
+@btn-hover-red-top:      rgb(251,3,8);
+@btn-hover-red-bottom:   rgb(169,26,26);
+
+@btn-blue-top:           rgb(89,134,169);
+@btn-blue-bottom:        rgb(37,86,124);
+@btn-hover-blue-top:     rgb(84,144,191);
+@btn-hover-blue-bottom:  rgb(35,92,137);
+
+@btn-grey-top:           rgb(219,219,219);
+@btn-grey-bottom:        rgb(167,167,167);
+@btn-hover-grey-top:     rgb(230,230,230);
+@btn-hover-grey-bottom:  rgb(177,177,177);
+
