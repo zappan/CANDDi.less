@@ -1,17 +1,15 @@
 // hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
 // https://github.com/twitter/bootstrap/pull/351
-:root .alert-message, :root button, :root .button {
-  border-radius: 0 \0;
-}
-
+:root  button, 
+:root .button   { border-radius: 0 \0; }  /* FIX for IE9 rounded corners bleeding */
 
 /* common font-styling */
 .bold       { font-weight: bold; }
 .italic     { font-style: italic; }
-.sans       { font-family: Sans-serif; }
+.sans       { font-family: Arial, Helvetica, Sans-serif; }
 
 /* common face colors */
-.white      { color: #fafafa; }
+.white      { color: #ffffff; }
 
 /* common background colors */
 .bg-body-grey      { .bg-color(@canddi-bg-body-grey); }
@@ -39,12 +37,17 @@ button.green  { .button.green; }
 button.red    { .button.red; }
 button.blue   { .button.blue; }
 button.grey   { .button.grey; }
-button.small  { .button.small; }
-button.med    { .button.med; }
 button.large  { .button.large; }
+button.small  { .button.small; }
+button.micro  { .button.micro; }
 
-.button       { .white; .shadow; border-width: 0; outline: none; cursor: pointer; .rounded-corners; }
-a.button      { display: inline-block; .sans; }
+.button       { .white; border-width: 0; outline: none; cursor: pointer; white-space: nowrap;
+                .sans; .shadow; .rounded-corners; }
+a.button      { display: inline-block; }
+
+.button.large { font-size: 12px; line-height: 15px; padding: 8px 15px 7px 15px; }
+.button.small { font-size: 12px; line-height: 15px; padding: 4px 10px 3px 10px; }
+.button.micro { font-size: 11px; line-height: 15px; padding: 0px 7px; }
 
 .button.green    { .grad-linear(@btn-green-bottom,       @btn-green-top,                   @btn-green-bottom,                    0.05, 0.95); 
         &:hover  { .grad-linear(@btn-hover-green-bottom, @btn-hover-green-top,             @btn-hover-green-bottom,              0.05, 0.95); }
@@ -62,10 +65,6 @@ a.button      { display: inline-block; .sans; }
         &:hover  { .grad-linear(@btn-hover-grey-bottom,  @btn-hover-grey-top,              @btn-hover-grey-bottom,               0.05, 0.95); }
         &:active { .grad-linear(@btn-hover-grey-bottom,  darken(@btn-hover-grey-top, 15%), lighten(@btn-hover-grey-bottom, 9%),  0.45, 0.95); }
       }
-
-.button.small { font-size: 11px; line-height: 15px; padding: 0px 7px; }
-.button.med   { font-size: 12px; line-height: 15px; padding: 4px 10px 3px 10px; }
-.button.large { font-size: 12px; line-height: 15px; padding: 7px 15px 6px 15px; }
 
 
 // ========== LESS VARIABLES & MIXINS ==========

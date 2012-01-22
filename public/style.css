@@ -1,6 +1,7 @@
-:root .alert-message, :root button, :root .button {
+:root button, :root .button {
   border-radius: 0 \0;
 }
+/* FIX for IE9 rounded corners bleeding */
 /* common font-styling */
 .bold {
   font-weight: bold;
@@ -9,11 +10,11 @@
   font-style: italic;
 }
 .sans {
-  font-family: Sans-serif;
+  font-family: Arial, Helvetica, Sans-serif;
 }
 /* common face colors */
 .white {
-  color: #fafafa;
+  color: #ffffff;
 }
 /* common background colors */
 .bg-body-grey {
@@ -30,13 +31,13 @@
 }
 /* common HTML elements */
 h1 {
-  font-family: Sans-serif;
+  font-family: Arial, Helvetica, Sans-serif;
 }
 /* layout elements */
 body {
   margin: 0;
   padding: 0;
-  color: #fafafa;
+  color: #ffffff;
   background-color: #1d2429;
 }
 #header {
@@ -63,11 +64,13 @@ body {
 }
 /* Buttons styling */
 button {
-  color: #fafafa;
-  text-shadow: 0 1px 0px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
   border-width: 0;
   outline: none;
   cursor: pointer;
+  white-space: nowrap;
+  font-family: Arial, Helvetica, Sans-serif;
+  text-shadow: 0 1px 0px rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -300,34 +303,50 @@ button.grey:active {
   /* IE8,IE9 */
 
 }
-button.small {
-  font-size: 11px;
+button.large {
+  font-size: 12px;
   line-height: 15px;
-  padding: 0px 7px;
+  padding: 8px 15px 7px 15px;
 }
-button.med {
+button.small {
   font-size: 12px;
   line-height: 15px;
   padding: 4px 10px 3px 10px;
 }
-button.large {
-  font-size: 12px;
+button.micro {
+  font-size: 11px;
   line-height: 15px;
-  padding: 7px 15px 6px 15px;
+  padding: 0px 7px;
 }
 .button {
-  color: #fafafa;
-  text-shadow: 0 1px 0px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
   border-width: 0;
   outline: none;
   cursor: pointer;
+  white-space: nowrap;
+  font-family: Arial, Helvetica, Sans-serif;
+  text-shadow: 0 1px 0px rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
 a.button {
   display: inline-block;
-  font-family: Sans-serif;
+}
+.button.large {
+  font-size: 12px;
+  line-height: 15px;
+  padding: 8px 15px 7px 15px;
+}
+.button.small {
+  font-size: 12px;
+  line-height: 15px;
+  padding: 4px 10px 3px 10px;
+}
+.button.micro {
+  font-size: 11px;
+  line-height: 15px;
+  padding: 0px 7px;
 }
 .button.green {
   background-color: #619301;
@@ -556,21 +575,6 @@ a.button {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#c0c0c0', EndColorStr='#c8c8c8')";
   /* IE8,IE9 */
 
-}
-.button.small {
-  font-size: 11px;
-  line-height: 15px;
-  padding: 0px 7px;
-}
-.button.med {
-  font-size: 12px;
-  line-height: 15px;
-  padding: 4px 10px 3px 10px;
-}
-.button.large {
-  font-size: 12px;
-  line-height: 15px;
-  padding: 7px 15px 6px 15px;
 }
 /** 
  * Gradients definitions
