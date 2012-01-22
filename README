@@ -1,0 +1,19 @@
+CANDDi.less: Web interface elements prototyping using LESS
+==================================
+
+This demo project is a less playground and a UI elements prototpying area using modern CSS techniques
+
+To serve the web page and for 'less' library to work as javascript resource from the browser,
+rake webserver is used  (won't work if HTML served as file:/// resource)
+
+USAGE
+=====
+
+Run:
+
+    rake server
+
+Visit the webserver at:
+
+    http://localhost:9292
+
