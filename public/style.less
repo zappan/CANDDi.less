@@ -34,6 +34,7 @@ body               { margin: 0; padding: 0; .white; .bg-body-grey; }
 /* Buttons styling */
 button        { .button; }
 button.green  { .button.green; }
+button.orange { .button.orange; }
 button.red    { .button.red; }
 button.blue   { .button.blue; }
 button.grey   { .button.grey; }
@@ -49,21 +50,25 @@ a.button      { display: inline-block; }
 .button.small { font-size: 12px; line-height: 15px; padding: 4px 10px 3px 10px; }
 .button.micro { font-size: 11px; line-height: 15px; padding: 0px 7px; }
 
-.button.green    { .grad-linear(@btn-green-bottom,       @btn-green-top,                   @btn-green-bottom,                    0.05, 0.95); 
-        &:hover  { .grad-linear(@btn-hover-green-bottom, @btn-hover-green-top,             @btn-hover-green-bottom,              0.05, 0.95); }
-        &:active { .grad-linear(@btn-hover-green-bottom, darken(@btn-hover-green-top, 6%), lighten(@btn-hover-green-bottom, 6%), 0.25, 0.95); }
+.button.green    { .grad-linear(@btn-green-bottom,        @btn-green-top,                     @btn-green-bottom,                      0.05, 0.95); 
+        &:hover  { .grad-linear(@btn-hover-green-bottom,  @btn-hover-green-top,               @btn-hover-green-bottom,                0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-green-bottom,  darken(@btn-hover-green-top, 6%),   lighten(@btn-hover-green-bottom, 6%),   0.25, 0.95); }
       }
-.button.red      { .grad-linear(@btn-red-bottom,         @btn-red-top,                     @btn-red-bottom,                      0.05, 0.96);
-        &:hover  { .grad-linear(@btn-hover-red-bottom,   @btn-hover-red-top,               @btn-hover-red-bottom,                0.05, 0.96); }
-        &:active { .grad-linear(@btn-hover-red-bottom,   darken(@btn-hover-red-top, 10%),  lighten(@btn-hover-red-bottom, 6%),   0.45, 0.96); }
+.button.orange   { .grad-linear(@btn-orange-bottom,       @btn-orange-top,                    @btn-orange-bottom,                     0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-orange-bottom, @btn-hover-orange-top,              @btn-hover-orange-bottom,               0.05, 0.96); }
+        &:active { .grad-linear(@btn-hover-orange-bottom, darken(@btn-hover-orange-top, 10%), lighten(@btn-hover-orange-bottom, 6%),  0.45, 0.96); }
       }
-.button.blue     { .grad-linear(@btn-blue-bottom,        @btn-blue-top,                    @btn-blue-bottom,                     0.05, 0.96);
-        &:hover  { .grad-linear(@btn-hover-blue-bottom,  @btn-hover-blue-top,              @btn-hover-blue-bottom,               0.05, 0.95); }
-        &:active { .grad-linear(@btn-hover-blue-bottom,  darken(@btn-hover-blue-top, 11%), lighten(@btn-hover-blue-bottom, 7%),  0.45, 0.95); }
+.button.red      { .grad-linear(@btn-red-bottom,          @btn-red-top,                       @btn-red-bottom,                        0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-red-bottom,    @btn-hover-red-top,                 @btn-hover-red-bottom,                  0.05, 0.96); }
+        &:active { .grad-linear(@btn-hover-red-bottom,    darken(@btn-hover-red-top, 10%),    lighten(@btn-hover-red-bottom, 6%),     0.45, 0.96); }
       }
-.button.grey     { .grad-linear(@btn-grey-bottom,        @btn-grey-top,                    @btn-grey-bottom,                     0.05, 0.96);
-        &:hover  { .grad-linear(@btn-hover-grey-bottom,  @btn-hover-grey-top,              @btn-hover-grey-bottom,               0.05, 0.95); }
-        &:active { .grad-linear(@btn-hover-grey-bottom,  darken(@btn-hover-grey-top, 15%), lighten(@btn-hover-grey-bottom, 9%),  0.45, 0.95); }
+.button.blue     { .grad-linear(@btn-blue-bottom,         @btn-blue-top,                      @btn-blue-bottom,                       0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-blue-bottom,   @btn-hover-blue-top,                @btn-hover-blue-bottom,                 0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-blue-bottom,   darken(@btn-hover-blue-top, 11%),   lighten(@btn-hover-blue-bottom, 7%),    0.45, 0.95); }
+      }
+.button.grey     { .grad-linear(@btn-grey-bottom,         @btn-grey-top,                      @btn-grey-bottom,                       0.05, 0.96);
+        &:hover  { .grad-linear(@btn-hover-grey-bottom,   @btn-hover-grey-top,                @btn-hover-grey-bottom,                 0.05, 0.95); }
+        &:active { .grad-linear(@btn-hover-grey-bottom,   darken(@btn-hover-grey-top, 15%),   lighten(@btn-hover-grey-bottom, 9%),    0.45, 0.95); }
       }
 
 
@@ -101,29 +106,33 @@ a.button      { display: inline-block; }
 
 
 // *** LESS variables ***
-@bg-header-grey:         darken(@canddi-bg-body-grey, 10%);
-@canddi-bg-body-grey:    rgb(29,36,41);
-@canddi-bg-content-grey: rgb(40,49,54);
-@canddi-bg-contact-grey: rgb(29,36,41);
-@canddi-bg-widget-grey:  rgb(62,76,84);
+@bg-header-grey:          darken(@canddi-bg-body-grey, 10%);
+@canddi-bg-body-grey:     rgb(29,36,41);
+@canddi-bg-content-grey:  rgb(40,49,54);
+@canddi-bg-contact-grey:  rgb(29,36,41);
+@canddi-bg-widget-grey:   rgb(62,76,84);
 
-@btn-green-top:          rgb(140,201,0);
-@btn-green-bottom:       rgb(97,147,1);
-@btn-hover-green-top:    rgb(157,212,3);
-@btn-hover-green-bottom: rgb(93,154,0);
+@btn-green-top:           rgb(140,201,0);
+@btn-green-bottom:        rgb(97,147,1);
+@btn-hover-green-top:     rgb(157,212,3);
+@btn-hover-green-bottom:  rgb(93,154,0);
 
-@btn-red-top:            rgb(238,0,6);
-@btn-red-bottom:         rgb(162,24,24);
-@btn-hover-red-top:      rgb(251,3,8);
-@btn-hover-red-bottom:   rgb(169,26,26);
+@btn-orange-top:          rgb(210,145,32);
+@btn-orange-bottom:       rgb(203,101,26);
+@btn-hover-orange-top:    rgb(220,154,38);
+@btn-hover-orange-bottom: rgb(206,104,28);
 
-@btn-blue-top:           rgb(89,134,169);
-@btn-blue-bottom:        rgb(37,86,124);
-@btn-hover-blue-top:     rgb(84,144,191);
-@btn-hover-blue-bottom:  rgb(35,92,137);
+@btn-red-top:             rgb(238,0,6);
+@btn-red-bottom:          rgb(162,24,24);
+@btn-hover-red-top:       rgb(251,3,8);
+@btn-hover-red-bottom:    rgb(169,26,26);
 
-@btn-grey-top:           rgb(219,219,219);
-@btn-grey-bottom:        rgb(167,167,167);
-@btn-hover-grey-top:     rgb(230,230,230);
-@btn-hover-grey-bottom:  rgb(177,177,177);
+@btn-blue-top:            rgb(89,134,169);
+@btn-blue-bottom:         rgb(37,86,124);
+@btn-hover-blue-top:      rgb(84,144,191);
+@btn-hover-blue-bottom:   rgb(35,92,137);
 
+@btn-grey-top:            rgb(219,219,219);
+@btn-grey-bottom:         rgb(167,167,167);
+@btn-hover-grey-top:      rgb(230,230,230);
+@btn-hover-grey-bottom:   rgb(177,177,177);
